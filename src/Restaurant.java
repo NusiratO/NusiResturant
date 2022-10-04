@@ -105,40 +105,7 @@ public class Restaurant {
         }
     }
 
-    public void settingCusMenu(int numOfFoodItem){
-        //System.out.println(userTable.getVar());
-        String foodName;
-        double foodCost;
-            //System.out.println(userTable.getVar().get(z));
-        if (numOfFoodItem > 0 && numOfFoodItem <= 9) {
-            CusMenu.Appetizer(numOfFoodItem);
-            foodName = CusMenu.getFoodItem();
-            foodCost = CusMenu.getCost();
-            cusTable.calculateBill(foodCost);
-            System.out.println(foodName + " - $" + foodCost);
-        }
-        else if (numOfFoodItem > 9 && numOfFoodItem <= 20) {
-            CusMenu.MainCourse(numOfFoodItem);
-            foodCost = CusMenu.getCost();
-            foodName = CusMenu.getFoodItem();
-            cusTable.calculateBill(foodCost);
-            System.out.println(foodName + " - $" + foodCost);
-        }
-        else if (numOfFoodItem > 20 && numOfFoodItem <= 32) {
-            CusMenu.Dessert(numOfFoodItem);
-            foodCost = CusMenu.getCost();
-            foodName = CusMenu.getFoodItem();
-            cusTable.calculateBill(foodCost);
-            System.out.println(foodName + " - $" + foodCost);
-        }
-        else if (numOfFoodItem > 32 && numOfFoodItem <= 48) {
-            CusMenu.Drinks(numOfFoodItem);
-            foodCost = CusMenu.getCost();
-            foodName = CusMenu.getFoodItem();
-            cusTable.calculateBill(foodCost);
-            System.out.println(foodName + " - $" + foodCost);
-        }
-    }
+    
 
     public double addingTotalCost(int cusList){
         double cusTotal = 0.0;

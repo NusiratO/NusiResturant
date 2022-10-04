@@ -1,3 +1,9 @@
+/**
+ * Purpose: Mainly focus on creating and reserving a table
+ * @author Nusi
+ * @date 10/4/2022
+ */
+
 import java.util.ArrayList;
 
 public class ListOfTable {
