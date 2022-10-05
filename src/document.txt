@@ -1,0 +1,120 @@
+public Restaurant() {
+        //Properties should not touch other methods
+        numOfTables = 11;
+        numOfCustomer = 0;
+        count = 0;
+        cusOrderNum = 0;
+    }
+
+    public void newTable(){
+        for(int i = 0; i <= numOfTables; i++){
+            tableList.add(i, "Free");
+        }
+
+        tableList.remove(0);
+    }
+
+    public ArrayList<String> getTableList() {
+        return tableList;
+    }
+
+    public void reservedTable(int tableNum){
+        for(int i = 1; i < userTable.getTableList().size(); i++){
+            if(i == tableNum){
+                if(userTable.getTableList().get(i).equals("Free")){
+                    userTable.getTableList().set(i, "Reserved");
+                    cusTable = new Table(tableNum, "Reserved");
+                }
+                else{
+                    System.out.println("Sorry, it seems that the table has been reserved.");
+                }
+            }
+        }
+    }
+
+    public void newCustomer(int num){
+        numOfCustomer = num;
+        for(int i = 0; i <= numOfCustomer; i++){
+            Customer seatNum = new Customer(i);
+            CusList.add(seatNum);
+        }
+        CusList.remove(0);
+    }
+
+    public int getNumOfCustomer() {
+        return numOfCustomer;
+    }
+
+    public ArrayList<Customer> getCusList() {
+        return CusList;
+    }
+
+    public void OrderCount(int cusOrderCount){
+        count = cusOrderCount;
+        for(int i = 0; i <= count; i++){
+            cusOrderList.add(i);
+        }
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public ArrayList<Integer> getCusOrderList() {
+        return cusOrderList;
+    }
+
+
+    public int getNewInt(int intInput, int min, int max){
+        Scanner newScan = new Scanner(System.in);
+        int newInput = intInput;
+        while(!(newInput > min && newInput <= max)){
+            System.out.println("Error!");
+            System.out.println("Select between " + min + " and " + max);
+            newInput = newScan.nextInt();
+        }
+        return newInput;
+    }
+
+    public void menuList() throws FileNotFoundException {
+        File menuFile = new File("menu.txt");
+        Scanner menuItem = new Scanner(menuFile);
+
+        while(menuItem.hasNextLine()) {
+            System.out.println(menuItem.nextLine());
+        }
+    }
+
+    
+
+    public double addingTotalCost(int cusList){
+        double cusTotal = 0.0;
+            for (int x = 1; x < userTable.getCusOrderList().size(); x++) {
+                if (userTable.getCusOrderList().get(x) > 0 && userTable.getCusOrderList().get(x) <= 9) {
+                    CusMenu.Appetizer(userTable.getCusOrderList().get(x));
+                    double var3 = CusMenu.getCost();
+                    cusTotal = cusTotal + var3;
+                    userTable.getCusList().get(cusList).addTotalCost(var3);
+                }
+                else if (userTable.getCusOrderList().get(x) > 9 && userTable.getCusOrderList().get(x) <= 20) {
+                    CusMenu.MainCourse(userTable.getCusOrderList().get(x));
+                    double var3 = CusMenu.getCost();
+                    cusTotal = cusTotal + var3;
+                    userTable.getCusList().get(cusList).addTotalCost(var3);
+                }
+                else if (userTable.getCusOrderList().get(x) > 20 && userTable.getCusOrderList().get(x) <= 32) {
+                    CusMenu.Dessert(userTable.getCusOrderList().get(x));
+                    double var3 = CusMenu.getCost();
+                    cusTotal = cusTotal + var3;
+                    userTable.getCusList().get(cusList).addTotalCost(var3);
+                }
+                else if (userTable.getCusOrderList().get(x) > 32 && userTable.getCusOrderList().get(x) <= 48) {
+                    CusMenu.Drinks(userTable.getCusOrderList().get(x));
+                    double var3 = CusMenu.getCost();
+                    cusTotal = cusTotal + var3;
+                    userTable.getCusList().get(cusList).addTotalCost(var3);
+                }
+
+            }
+        return cusTotal;
+    }

@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 public class CustomerTable {
     //Properties
-    private int numOfCustomer;
-    private int count;
+    private static int numOfCustomer;
+    private static int count;
     private int cusOrderNum;
-    private ArrayList<Customer> CusList = new ArrayList<Customer>(numOfCustomer + 1);
-    private ArrayList<Integer> cusOrderList = new ArrayList<Integer>(count);
+    private static ArrayList<Customer> CusList = new ArrayList<Customer>(numOfCustomer + 1);
+    private static ArrayList<Integer> cusOrderList = new ArrayList<Integer>(count);
     private ArrayList<Integer> cusOrder = new ArrayList<Integer>(cusOrderNum);
     private static Table cusTable;
     private static Menu CusMenu = new Menu();
@@ -27,7 +27,7 @@ public class CustomerTable {
      * Purpose: Creates a new customer in the customer list
      * @param num
      */
-    public void newCustomer(int num){
+    public static void newCustomer(int num){
         numOfCustomer = num;
         for(int i = 0; i <= numOfCustomer; i++){
             Customer seatNum = new Customer(i);
@@ -40,7 +40,7 @@ public class CustomerTable {
      * Purpose: Creates a list with the number of times the customer will order 
      * @param cusOrderCount
      */
-    public void OrderCount(int cusOrderCount){
+    public static void OrderCount(int cusOrderCount){
         count = cusOrderCount;
         for(int i = 0; i <= count; i++){
             cusOrderList.add(i);
@@ -51,7 +51,7 @@ public class CustomerTable {
      * Purpose: finds the food item number and adds the cost to the tables' bill
      * @param numOfFoodItem
      */
-    public void settingCusMenu(int numOfFoodItem){
+    public static void settingCusMenu(int numOfFoodItem){
         //System.out.println(userTable.getVar());
         String foodName;
         double foodCost;
@@ -91,7 +91,7 @@ public class CustomerTable {
      * @param cusList
      * @return the customer total cost
      */
-    public double addingTotalCost(int cusList){
+    public static double addingTotalCost(int cusList){
         double cusTotal = 0.0;
             for (int x = 1; x < cusOrderList.size(); x++) {
                 if (cusOrderList.get(x) > 0 && cusOrderList.get(x) <= 9) {
@@ -124,15 +124,19 @@ public class CustomerTable {
     }
 
     //getters
-    public int getNumOfCustomer(){
+    public static int getNumOfCustomer(){
         return numOfCustomer;
     }
 
-    public ArrayList<Customer> getCusList(){
+    public static ArrayList<Customer> getCusList(){
         return CusList;
     }
 
     public int getCount() {
         return count;
+    }
+
+    public static ArrayList<Integer> getCusOrderList() {
+        return cusOrderList;
     }
 }

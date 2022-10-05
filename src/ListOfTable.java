@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class ListOfTable {
     //Properties
-    private int numOfTables;
-    private ArrayList<String> tableList = new ArrayList<String>(numOfTables);
+    private static int numOfTables;
+    private static ArrayList<String> tableList = new ArrayList<String>(numOfTables);
  
     public ListOfTable() {
         numOfTables = 11;
@@ -20,7 +20,7 @@ public class ListOfTable {
      * @param None
      * @return None
      */
-    public void newTable(){
+    public static void newTable(){
         for(int i = 0; i <= numOfTables; i++){
             tableList.add(i, "Available");
         }
@@ -35,7 +35,7 @@ public class ListOfTable {
      * @param tableNum
      * @return None
      */
-    public void reservedTable(int tableNum){
+    public static void reservedTable(int tableNum){
         for(int i = 1; i < tableList.size(); i++){
             if(i == tableNum){
                 if(tableList.get(i).equals("Available")){
@@ -50,7 +50,7 @@ public class ListOfTable {
     }
 
     
-    public ArrayList<String> getTableList(){
+    public static ArrayList<String> getTableList(){
         return tableList;
     }
 
